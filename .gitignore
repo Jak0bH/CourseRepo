@@ -7,3 +7,6 @@ build/
 ## Intellij  ##
 .idea/
 out/
+
+## Tests ##
+coverage/

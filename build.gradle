@@ -9,4 +9,14 @@ repositories {
     mavenCentral()
 }
 
-dependencies {}
+dependencies {
+    // JUnit5
+    testImplementation "org.junit.jupiter:junit-jupiter:5.8.2"
+
+    // JaCoCo
+    testImplementation "org.jacoco:org.jacoco.core:0.8.8"
+}
+
+test {
+    useJUnitPlatform()
+}
