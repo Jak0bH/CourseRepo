@@ -1,12 +1,10 @@
 package com.github.jak0bh.courserepo.tdd;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public abstract class Flight {
 	private String id;
-	List<Passenger> passengersList = new ArrayList<>();
+	Set<Passenger> passengersList = new HashSet<>();
 
 	public Flight(String id) {
 		this.id = id;
@@ -16,8 +14,8 @@ public abstract class Flight {
 		return id;
 	}
 
-	public List<Passenger> getPassengersList() {
-		return Collections.unmodifiableList(passengersList);
+	public Set<Passenger> getPassengersSet() {
+		return Collections.unmodifiableSet(passengersList);
 	}
 
 	public abstract boolean addPassenger(Passenger passenger);
