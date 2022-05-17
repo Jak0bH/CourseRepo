@@ -1,8 +1,5 @@
-package com.github.jak0bh.courserepo.tdd.vtwo.nested;
+package com.github.jak0bh.courserepo.tdd;
 
-import com.github.jak0bh.courserepo.tdd.vtwo.EconomyFlight;
-import com.github.jak0bh.courserepo.tdd.vtwo.Flight;
-import com.github.jak0bh.courserepo.tdd.vtwo.Passenger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -56,6 +53,51 @@ class AirportTest {
 					() -> assertEquals("John", economyFlight.getPassengersList().get(0).getName()),
 					() -> assertFalse(economyFlight.removePassenger(john)),
 					() -> assertEquals(1, economyFlight.getPassengersList().size())
+				);
+			}
+		}
+	}
+
+	@Nested
+	@DisplayName("Given there is a premium flight")
+	class PremiumFlightTest {
+		private Flight premiumFlight;
+		private Passenger mike;
+		private Passenger john;
+
+		@BeforeEach
+		void setUp() {
+			premiumFlight = new PremiumFlight("3");
+			mike = new Passenger("Mike", false);
+			john = new Passenger("John", true);
+		}
+
+		@Nested
+		@DisplayName("When we have an usual passenger")
+		class UsualPassenger {
+			@Test
+			@DisplayName("Test that you can add and remove him from an economy flight")
+			void testPremiumFlightUsualPassenger() {
+				assertAll("Verify all conditions for an usual passenger and an economy flight",
+					() -> assertFalse(premiumFlight.addPassenger(mike)),
+					() -> assertEquals(0, premiumFlight.getPassengersList().size()),
+					() -> assertFalse(premiumFlight.removePassenger(mike)),
+					() -> assertEquals(0, premiumFlight.getPassengersList().size())
+				);
+			}
+		}
+
+		@Nested
+		@DisplayName("When we have a VIP passenger")
+		class VipPassenger {
+			@Test
+			@DisplayName("Test that you can add and remove him from an economy flight")
+			void testPremiumFlightVipPassenger() {
+				assertAll("Verify all conditions for a VIP passenger and an economy flight",
+					() -> assertTrue(premiumFlight.addPassenger(john)),
+					() -> assertEquals(1, premiumFlight.getPassengersList().size()),
+					() -> assertTrue(premiumFlight.removePassenger(john)),
+					() -> assertEquals(0, premiumFlight.getPassengersList().size())
 				);
 			}
 		}

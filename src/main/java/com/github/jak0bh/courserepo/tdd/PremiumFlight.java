@@ -1,8 +1,8 @@
-package com.github.jak0bh.courserepo.tdd.vtwo;
+package com.github.jak0bh.courserepo.tdd;
 
-public class BusinessFlight extends Flight {
+public class PremiumFlight extends Flight {
 
-	public BusinessFlight(String id) {
+	public PremiumFlight(String id) {
 		super(id);
 	}
 
@@ -16,6 +16,9 @@ public class BusinessFlight extends Flight {
 
 	@Override
 	public boolean removePassenger(Passenger passenger) {
+		if (passenger.isVip()) {
+			return passengersList.remove(passenger);
+		}
 		return false;
 	}
 }

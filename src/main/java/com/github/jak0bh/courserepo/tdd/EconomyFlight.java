@@ -1,4 +1,4 @@
-package com.github.jak0bh.courserepo.tdd.vtwo;
+package com.github.jak0bh.courserepo.tdd;
 
 public class EconomyFlight extends Flight {
 

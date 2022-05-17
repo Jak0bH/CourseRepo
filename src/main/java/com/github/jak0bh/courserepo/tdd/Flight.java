@@ -1,4 +1,4 @@
-package com.github.jak0bh.courserepo.tdd.vtwo;
+package com.github.jak0bh.courserepo.tdd;
 
 import java.util.ArrayList;
 import java.util.Collections;
